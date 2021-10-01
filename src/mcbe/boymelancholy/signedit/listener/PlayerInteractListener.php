@@ -37,6 +37,9 @@ class PlayerInteractListener implements Listener
         $block = $event->getBlock();
         if (!$block instanceof BaseSign) return;
 
+        $action = $event->getAction();
+        if ($action !== PlayerInteractEvent::RIGHT_CLICK_BLOCK) return;
+
         $ev = new InteractSignEvent($block, $event->getPlayer());
         $ev->call();
     }
