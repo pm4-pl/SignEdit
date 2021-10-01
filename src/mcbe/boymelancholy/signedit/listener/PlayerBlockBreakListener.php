@@ -18,7 +18,7 @@ class PlayerBlockBreakListener implements Listener
         $block = $event->getBlock();
         if (!$block instanceof BaseSign) return;
 
-        // $event->setDrops([]);
+        $event->setDrops([]);
 
         $ev = new BreakSignEvent($block, $event->getPlayer());
         $ev->call();
