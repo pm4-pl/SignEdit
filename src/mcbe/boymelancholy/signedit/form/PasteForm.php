@@ -5,7 +5,6 @@ namespace mcbe\boymelancholy\signedit\form;
 use mcbe\boymelancholy\signedit\util\TextClipboard;
 use pocketmine\block\BaseSign;
 use pocketmine\form\Form;
-use pocketmine\form\FormValidationException;
 use pocketmine\player\Player;
 
 class PasteForm implements Form
@@ -13,7 +12,8 @@ class PasteForm implements Form
     private BaseSign $sign;
     private Player $player;
 
-    public function __construct(BaseSign $sign, Player $player) {
+    public function __construct(BaseSign $sign, Player $player)
+    {
         $this->sign = $sign;
         $this->player = $player;
     }

@@ -17,7 +17,8 @@ class TextClipboard
         $this->player = $player;
     }
 
-    public function getOwner(): String {
+    public function getOwner(): String
+    {
         return $this->player->getName();
     }
 
@@ -33,7 +34,8 @@ class TextClipboard
         return true;
     }
 
-    public function remove(int $index): ?SignText {
+    public function remove(int $index): ?SignText
+    {
         if ($this->get($index) !== null) {
             $text = $this->textClipboards[$index];
             unset($this->textClipboards[$index]);
@@ -48,21 +50,24 @@ class TextClipboard
         return $this->textClipboards[$index] ?? null;
     }
 
-    public function size(): Int {
+    public function size(): Int
+    {
         return count($this->textClipboards);
     }
 
     /**
      * @return SignText[]
      */
-    public function getAll(): array {
+    public function getAll(): array
+    {
         return $this->textClipboards ?? [];
     }
 
     /** @var TextClipboard[] */
     public static array $clipboards = [];
 
-    public static function getClipBoard(Player $player): TextClipboard {
+    public static function getClipBoard(Player $player): TextClipboard
+    {
         foreach (self::$clipboards as $cb) {
             if ($cb->getOwner() === $player->getName()) {
                 return $cb;
@@ -73,7 +78,8 @@ class TextClipboard
         return $newCb;
     }
 
-    public static function deleteClipboard(Player $player) {
+    public static function deleteClipboard(Player $player)
+    {
         for ($i = 0; $i < count(self::$clipboards); ++$i) {
             if (self::$clipboards[$i]->getOwner() === $player->getName()) {
                 unset(self::$clipboards[$i]);

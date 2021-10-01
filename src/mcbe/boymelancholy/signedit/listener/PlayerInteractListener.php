@@ -3,13 +3,8 @@
 namespace mcbe\boymelancholy\signedit\listener;
 
 use mcbe\boymelancholy\signedit\event\InteractSignEvent;
-use mcbe\boymelancholy\signedit\SignEdit;
 use mcbe\boymelancholy\signedit\util\InteractFlag;
 use pocketmine\block\BaseSign;
-use pocketmine\block\Block;
-use pocketmine\block\BlockIdentifier;
-use pocketmine\block\BlockLegacyIds;
-use pocketmine\block\tile\Sign;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\item\ItemIds;

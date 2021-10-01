@@ -4,14 +4,14 @@ namespace mcbe\boymelancholy\signedit\form;
 
 use pocketmine\block\BaseSign;
 use pocketmine\form\Form;
-use pocketmine\form\FormValidationException;
 use pocketmine\player\Player;
 
 class HomeForm implements Form
 {
     private BaseSign $sign;
 
-    public function __construct(BaseSign $sign) {
+    public function __construct(BaseSign $sign)
+    {
         $this->sign = $sign;
     }
 

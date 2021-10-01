@@ -10,14 +10,15 @@ use pocketmine\item\ItemIds;
 
 class PlayerBlockBreakListener implements Listener
 {
-    public function onBreakSign(BlockBreakEvent $event) {
+    public function onBreakSign(BlockBreakEvent $event)
+    {
         $item = $event->getItem();
         if ($item->getId() !== ItemIds::FEATHER) return;
 
         $block = $event->getBlock();
         if (!$block instanceof BaseSign) return;
 
-        $event->setDrops([]);
+        // $event->setDrops([]);
 
         $ev = new BreakSignEvent($block, $event->getPlayer());
         $ev->call();

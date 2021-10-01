@@ -8,7 +8,8 @@ use pocketmine\event\player\PlayerQuitEvent;
 
 class PlayerQuitListener implements Listener
 {
-    public function onPlayerQuit(PlayerQuitEvent $event) {
+    public function onPlayerQuit(PlayerQuitEvent $event)
+    {
         $player = $event->getPlayer();
         TextClipboard::deleteClipboard($player);
     }
