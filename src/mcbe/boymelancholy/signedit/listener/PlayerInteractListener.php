@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace mcbe\boymelancholy\signedit\listener;
 
 use mcbe\boymelancholy\signedit\event\InteractSignEvent;
@@ -34,7 +36,5 @@ class PlayerInteractListener implements Listener
             $ev->call();
             $this->lastSignTouchTime[$player->getName()] = microtime(true);
         }
-
-
     }
 }

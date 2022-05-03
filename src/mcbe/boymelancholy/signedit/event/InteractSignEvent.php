@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace mcbe\boymelancholy\signedit\event;
 
 use pocketmine\block\BaseSign;

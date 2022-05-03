@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace mcbe\boymelancholy\signedit\event;
 
 use pocketmine\block\BaseSign;
@@ -13,10 +15,5 @@ abstract class SignEditEvent extends Event
     public function getSign(): BaseSign
     {
         return $this->signBlock;
-    }
-
-    public function getSignText(): SignText
-    {
-        return $this->signBlock->getText();
     }
 }

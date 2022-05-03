@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace mcbe\boymelancholy\signedit\form;
 
 use mcbe\boymelancholy\signedit\util\WrittenSign;

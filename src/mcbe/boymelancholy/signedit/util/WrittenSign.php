@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace mcbe\boymelancholy\signedit\util;
 
 use pocketmine\block\utils\SignText;
 use pocketmine\item\Item;
-use pocketmine\item\ItemFactory;
+use pocketmine\item\ItemIdentifier;
 use pocketmine\item\ItemIds;
 use pocketmine\nbt\tag\CompoundTag;
 
@@ -29,7 +31,8 @@ class WrittenSign
         $this->isHangable = $value;
     }
 
-    public function create(): Item {
+    public function create(): Item
+    {
         $id = 323;
         $name = '編集済み{%i}看板';
         if ($this->isStandable) {
@@ -40,7 +43,7 @@ class WrittenSign
             $id = ItemIds::WALL_SIGN;
             $name = str_replace('{%i}', '壁掛型', $name);
         }
-        $obj = ItemFactory::getInstance()->get($id, 0, 1);
+        $obj = new Item(new ItemIdentifier($id, 0));
 
         $tag = new CompoundTag();
         $tag->setString('Text1', $this->signText->getLine(0));

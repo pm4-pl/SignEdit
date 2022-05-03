@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace mcbe\boymelancholy\signedit\listener;
 
 use mcbe\boymelancholy\signedit\util\TextClipboard;
