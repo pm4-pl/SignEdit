@@ -5,4 +5,5 @@ branches:
 projects:
   SignEdit:
     path: ""
+    icon: assets/icon.png
 ...
