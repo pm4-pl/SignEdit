@@ -34,14 +34,14 @@ class WrittenSign
     public function create(): Item
     {
         $id = 323;
-        $name = '編集済み{%i}看板';
+        $name = 'Written {%i} Sign';
         if ($this->isStandable) {
             $id = ItemIds::SIGN_POST;
-            $name = str_replace('{%i}', '設置型', $name);
+            $name = str_replace('{%i}', 'Standing', $name);
         }
         if ($this->isHangable) {
             $id = ItemIds::WALL_SIGN;
-            $name = str_replace('{%i}', '壁掛型', $name);
+            $name = str_replace('{%i}', 'Wall', $name);
         }
         $obj = new Item(new ItemIdentifier($id, 0));
 

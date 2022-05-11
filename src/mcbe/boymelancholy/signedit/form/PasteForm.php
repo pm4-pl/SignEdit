@@ -48,15 +48,15 @@ class PasteForm implements Form
     {
         $clipboard = TextClipboard::getClipBoard($this->player);
         $formJson = [];
-        $formJson['title'] = 'SignEdit　> ペースト';
+        $formJson['title'] = 'SignEdit　> Paste';
         if ($clipboard->size() == 0) {
             $formJson['type'] = 'modal';
-            $formJson['content'] = '何もコピーされていません';
-            $formJson['button1'] = '戻る';
-            $formJson['button2'] = '終わる';
+            $formJson['content'] = 'Clipboard does not have any texts.';
+            $formJson['button1'] = 'Back';
+            $formJson['button2'] = 'Exit';
         } else {
             $formJson['type'] = 'form';
-            $formJson['content'] = '貼り付けたい文字を選択してください';
+            $formJson['content'] = 'Select the text you wish to paste.';
             foreach ($clipboard->getAll() as $item) {
                 $formJson['buttons'][] = [
                     'text' => implode('/', $item->getLines())

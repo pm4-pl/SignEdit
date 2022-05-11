@@ -39,10 +39,10 @@ class CopyForm implements Form
     {
         return [
             'type' => 'modal',
-            'title' => 'SignEdit > コピー',
-            'content' => 'この看板の文字をコピーしますか',
-            'button1' => 'はい',
-            'button2' => 'いいえ'
+            'title' => 'SignEdit > Copy',
+            'content' => 'Do you want to copy the text on this sign?',
+            'button1' => 'Yes',
+            'button2' => 'No'
         ];
     }
 }

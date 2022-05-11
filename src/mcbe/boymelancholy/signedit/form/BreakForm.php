@@ -42,10 +42,10 @@ class BreakForm implements Form
     {
         return [
             'type' => 'modal',
-            'title' => 'SignEdit > テキスト保持',
-            'content' => 'テキストを保持して削除する場合の形式を選んでください'."\n".'ただ壊す場合はこのウィンドウを閉じてください',
-            'button1' => '設置型',
-            'button2' => '壁掛型'
+            'title' => 'SignEdit > Break',
+            'content' => 'Choose the format for dropping signs that hold text '." \n".' If you just want to break it, close this window.',
+            'button1' => 'Standing',
+            'button2' => 'Wall hanging'
         ];
     }
 }

@@ -52,19 +52,19 @@ class HomeForm implements Form
         return [
             'type' => 'form',
             'title' => 'SignEdit',
-            'content' => '実行したい処理を選択してください',
+            'content' => 'Please select the process you wish to execute.',
             'buttons' => [
                 [
-                    'text' => '編集'
+                    'text' => 'Edit'
                 ],
                 [
-                    'text' => 'コピー'
+                    'text' => 'Copy'
                 ],
                 [
-                    'text' => 'ペースト'
+                    'text' => 'Paste'
                 ],
                 [
-                    'text' => 'クリア'
+                    'text' => 'Erase'
                 ]
             ]
         ];

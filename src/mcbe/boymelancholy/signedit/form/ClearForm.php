@@ -38,10 +38,10 @@ class ClearForm implements Form
     {
         return [
             'type' => 'modal',
-            'title' => 'SignEdit > クリア',
-            'content' => '本当に看板の文字をすべて削除しますか',
-            'button1' => 'はい',
-            'button2' => 'いいえ'
+            'title' => 'SignEdit > Erase',
+            'content' => 'Do you really want to remove all the text from the sign?',
+            'button1' => 'Yes',
+            'button2' => 'No'
         ];
     }
 }

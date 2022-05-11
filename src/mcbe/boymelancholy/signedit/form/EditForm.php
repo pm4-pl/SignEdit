@@ -39,26 +39,26 @@ class EditForm implements Form
         $signText = $this->sign->getText();
         return [
             'type' => 'custom_form',
-            'title' => 'SignEdit > 編集',
+            'title' => 'SignEdit > Edit',
             'content' => [
                 [
                     'type' => 'input',
-                    'text' => '一行目',
+                    'text' => 'Line 1',
                     'default' => $signText->getLine(0)
                 ],
                 [
                     'type' => 'input',
-                    'text' => '二行目',
+                    'text' => 'Line 2',
                     'default' => $signText->getLine(1)
                 ],
                 [
                     'type' => 'input',
-                    'text' => '三行目',
+                    'text' => 'Line 3',
                     'default' => $signText->getLine(2)
                 ],
                 [
                     'type' => 'input',
-                    'text' => '四行目',
+                    'text' => 'Line 4',
                     'default' => $signText->getLine(3)
                 ],
             ]
