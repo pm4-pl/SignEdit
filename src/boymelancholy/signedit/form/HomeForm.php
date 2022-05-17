@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace boymelancholy\signedit\form;
 
+use boymelancholy\signedit\lang\Language;
 use pocketmine\block\BaseSign;
 use pocketmine\form\Form;
 use pocketmine\player\Player;
@@ -56,12 +57,12 @@ class HomeForm implements Form
     public function jsonSerialize()
     {
         $formArray["type"] = "form";
-        $formArray["title"] = "SignEdit";
-        $formArray["content"] = "Please select the process you wish to execute.";
-        $formArray["buttons"][]["text"] = "Edit";
-        $formArray["buttons"][]["text"] = "Copy";
-        $formArray["buttons"][]["text"] = "Paste";
-        $formArray["buttons"][]["text"] = "Erase";
+        $formArray["title"] = Language::get("form.home.button.title");
+        $formArray["content"] = Language::get("form.home.content");
+        $formArray["buttons"][]["text"] = Language::get("form.home.button.edit");
+        $formArray["buttons"][]["text"] = Language::get("form.home.button.copy");
+        $formArray["buttons"][]["text"] = Language::get("form.home.button.paste");
+        $formArray["buttons"][]["text"] = Language::get("form.home.button.clear");
         return $formArray;
     }
 }

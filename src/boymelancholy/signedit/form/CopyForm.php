@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace boymelancholy\signedit\form;
 
+use boymelancholy\signedit\lang\Language;
 use boymelancholy\signedit\util\TextClipboard;
 use pocketmine\block\BaseSign;
 use pocketmine\form\Form;
@@ -45,10 +46,10 @@ class CopyForm implements Form
     public function jsonSerialize()
     {
         $formArray["type"] = "modal";
-        $formArray["title"] = "SignEdit > Copy";
-        $formArray["content"] = "Do you want to copy the text on this sign?";
-        $formArray["button1"] = "Yes";
-        $formArray["button2"] = "No";
+        $formArray["title"] = Language::get("form.copy.title");
+        $formArray["content"] = Language::get("form.copy.content");
+        $formArray["button1"] = Language::get("form.copy.button1");
+        $formArray["button2"] = Language::get("form.copy.button2");
         return $formArray;
     }
 }

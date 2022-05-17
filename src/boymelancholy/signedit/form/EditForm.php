@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace boymelancholy\signedit\form;
 
+use boymelancholy\signedit\lang\Language;
 use pocketmine\block\BaseSign;
 use pocketmine\block\utils\SignText;
 use pocketmine\form\Form;
@@ -46,10 +47,10 @@ class EditForm implements Form
         $signText = $this->sign->getText();
 
         $formArray["type"] = "custom_form";
-        $formArray["title"] = "SignEdit > Edit";
+        $formArray["title"] = Language::get("form.edit.title");
         for ($i = 0; $i < 4; ++$i) {
             $content["type"] = "input";
-            $content["text"] = "Line " . ($i + 1);
+            $content["text"] = Language::get("form.edit.label", [(string)($i + 1)]);
             $content["default"] = $signText->getLine($i);
             $formArray["content"][] = $content;
         }
