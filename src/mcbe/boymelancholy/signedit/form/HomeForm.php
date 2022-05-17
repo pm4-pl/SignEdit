@@ -57,7 +57,7 @@ class HomeForm implements Form
     public function jsonSerialize()
     {
         $formArray["type"] = "form";
-        $formArray["title"] = Language::get("form.home.button.title");
+        $formArray["title"] = Language::get("form.home.title");
         $formArray["content"] = Language::get("form.home.content");
         $formArray["buttons"][]["text"] = Language::get("form.home.button.edit");
         $formArray["buttons"][]["text"] = Language::get("form.home.button.copy");
