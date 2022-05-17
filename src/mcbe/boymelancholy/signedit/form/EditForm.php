@@ -18,9 +18,6 @@ class EditForm implements Form
         $this->sign = $sign;
     }
 
-    /**
-     * @inheritDoc
-     */
     public function handleResponse(Player $player, $data): void
     {
         if ($data === null) {
@@ -31,37 +28,18 @@ class EditForm implements Form
         $player->getWorld()->setBlock($this->sign->getPosition(), $this->sign);
     }
 
-    /**
-     * @inheritDoc
-     */
     public function jsonSerialize()
     {
         $signText = $this->sign->getText();
-        return [
-            "type" => "custom_form",
-            "title" => "SignEdit > Edit",
-            "content" => [
-                [
-                    "type" => "input",
-                    "text" => "Line 1",
-                    "default" => $signText->getLine(0)
-                ],
-                [
-                    "type" => "input",
-                    "text" => "Line 2",
-                    "default" => $signText->getLine(1)
-                ],
-                [
-                    "type" => "input",
-                    "text" => "Line 3",
-                    "default" => $signText->getLine(2)
-                ],
-                [
-                    "type" => "input",
-                    "text" => "Line 4",
-                    "default" => $signText->getLine(3)
-                ],
-            ]
-        ];
+
+        $formArray["type"] = "custom_form";
+        $formArray["title"] = "SignEdit > Edit";
+        for ($i = 0; $i < 4; ++$i) {
+            $content["type"] = "input";
+            $content["text"] = "Line " . ($i + 1);
+            $content["default"] = $signText->getLine($i);
+            $formArray["content"][] = $content;
+        }
+        return $formArray;
     }
 }

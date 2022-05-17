@@ -20,9 +20,6 @@ class PasteForm implements Form
         $this->player = $player;
     }
 
-    /**
-     * @inheritDoc
-     */
     public function handleResponse(Player $player, $data): void
     {
         if ($data === null) {
@@ -38,16 +35,12 @@ class PasteForm implements Form
 
         $signText = TextClipboard::getClipBoard($player)?->get($data);
         $this->sign->setText($signText);
-        $player->getWorld()->setBlock($this->sign->getPosition(), $this->sign, true);
+        $player->getWorld()->setBlock($this->sign->getPosition(), $this->sign);
     }
 
-    /**
-     * @inheritDoc
-     */
     public function jsonSerialize()
     {
         $clipboard = TextClipboard::getClipBoard($this->player);
-        $formJson = [];
         $formJson["title"] = "SignEdit　> Paste";
         if ($clipboard->size() == 0) {
             $formJson["type"] = "modal";
@@ -58,9 +51,7 @@ class PasteForm implements Form
             $formJson["type"] = "form";
             $formJson["content"] = "Select the text you wish to paste.";
             foreach ($clipboard->getAll() as $item) {
-                $formJson["buttons"][] = [
-                    "text" => implode("/", $item->getLines())
-                ];
+                $formJson["buttons"][]["text"] = implode("/", $item->getLines());
             }
         }
         return $formJson;

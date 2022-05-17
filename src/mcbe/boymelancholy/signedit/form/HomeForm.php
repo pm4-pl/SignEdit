@@ -17,9 +17,6 @@ class HomeForm implements Form
         $this->sign = $sign;
     }
 
-    /**
-     * @inheritDoc
-     */
     public function handleResponse(Player $player, $data): void
     {
         if ($data === null) {
@@ -44,29 +41,15 @@ class HomeForm implements Form
         }
     }
 
-    /**
-     * @inheritDoc
-     */
     public function jsonSerialize()
     {
-        return [
-            "type" => "form",
-            "title" => "SignEdit",
-            "content" => "Please select the process you wish to execute.",
-            "buttons" => [
-                [
-                    "text" => "Edit"
-                ],
-                [
-                    "text" => "Copy"
-                ],
-                [
-                    "text" => "Paste"
-                ],
-                [
-                    "text" => "Erase"
-                ]
-            ]
-        ];
+        $formArray["type"] = "form";
+        $formArray["title"] = "SignEdit";
+        $formArray["content"] = "Please select the process you wish to execute.";
+        $formArray["buttons"][]["text"] = "Edit";
+        $formArray["buttons"][]["text"] = "Copy";
+        $formArray["buttons"][]["text"] = "Paste";
+        $formArray["buttons"][]["text"] = "Erase";
+        return $formArray;
     }
 }

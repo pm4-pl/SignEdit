@@ -18,9 +18,6 @@ class ClearForm implements Form
         $this->sign = $sign;
     }
 
-    /**
-     * @inheritDoc
-     */
     public function handleResponse(Player $player, $data): void
     {
         if (!$data) {
@@ -28,20 +25,16 @@ class ClearForm implements Form
             return;
         }
         $this->sign->setText(new SignText());
-        $player->getWorld()->setBlock($this->sign->getPosition(), $this->sign, true);
+        $player->getWorld()->setBlock($this->sign->getPosition(), $this->sign);
     }
 
-    /**
-     * @inheritDoc
-     */
     public function jsonSerialize()
     {
-        return [
-            "type" => "modal",
-            "title" => "SignEdit > Erase",
-            "content" => "Do you really want to remove all the text from the sign?",
-            "button1" => "Yes",
-            "button2" => "No"
-        ];
+        $formArray["type"] = "modal";
+        $formArray["title"] = "SignEdit > Erase";
+        $formArray["content"] = "Do you really want to remove all the text from the sign?";
+        $formArray["button1"] = "Yes";
+        $formArray["button2"] = "No";
+        return $formArray;
     }
 }

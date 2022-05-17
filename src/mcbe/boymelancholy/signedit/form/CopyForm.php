@@ -18,9 +18,6 @@ class CopyForm implements Form
         $this->sign = $sign;
     }
 
-    /**
-     * @inheritDoc
-     */
     public function handleResponse(Player $player, $data): void
     {
         if (!$data) {
@@ -32,17 +29,13 @@ class CopyForm implements Form
         $clipboard->add($signText);
     }
 
-    /**
-     * @inheritDoc
-     */
     public function jsonSerialize()
     {
-        return [
-            "type" => "modal",
-            "title" => "SignEdit > Copy",
-            "content" => "Do you want to copy the text on this sign?",
-            "button1" => "Yes",
-            "button2" => "No"
-        ];
+        $formArray["type"] = "modal";
+        $formArray["title"] = "SignEdit > Copy";
+        $formArray["content"] = "Do you want to copy the text on this sign?";
+        $formArray["button1"] = "Yes";
+        $formArray["button2"] = "No";
+        return $formArray;
     }
 }
