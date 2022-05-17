@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace mcbe\boymelancholy\signedit\event;
 
 use pocketmine\block\BaseSign;
-use pocketmine\block\utils\SignText;
 use pocketmine\event\Event;
 
 abstract class SignEditEvent extends Event

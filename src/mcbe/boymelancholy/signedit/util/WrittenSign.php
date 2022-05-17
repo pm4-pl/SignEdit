@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace mcbe\boymelancholy\signedit\util;
 
 use pocketmine\block\BaseSign;
-use pocketmine\item\Item;
 use pocketmine\item\ItemBlockWallOrFloor;
 use pocketmine\item\ItemIdentifier;
 use pocketmine\item\ItemIds;
