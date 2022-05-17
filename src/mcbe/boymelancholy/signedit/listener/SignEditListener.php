@@ -6,8 +6,8 @@ namespace mcbe\boymelancholy\signedit\listener;
 
 use mcbe\boymelancholy\signedit\event\BreakSignEvent;
 use mcbe\boymelancholy\signedit\event\InteractSignEvent;
-use mcbe\boymelancholy\signedit\form\BreakForm;
 use mcbe\boymelancholy\signedit\form\HomeForm;
+use mcbe\boymelancholy\signedit\util\WrittenSign;
 use pocketmine\event\Listener;
 
 class SignEditListener implements Listener
@@ -24,6 +24,7 @@ class SignEditListener implements Listener
         $player = $event->getPlayer();
         $sign = $event->getSign();
 
-        $player->sendForm(new BreakForm($sign));
+        $writtenSign = new WrittenSign($sign);
+        $player->getWorld()->dropItem($sign->getPosition(), $writtenSign->create());
     }
 }

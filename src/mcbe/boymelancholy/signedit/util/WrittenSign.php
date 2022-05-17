@@ -4,58 +4,41 @@ declare(strict_types=1);
 
 namespace mcbe\boymelancholy\signedit\util;
 
-use pocketmine\block\utils\SignText;
+use pocketmine\block\BaseSign;
+use pocketmine\block\VanillaBlocks;
 use pocketmine\item\Item;
-use pocketmine\item\ItemFactory;
+use pocketmine\item\ItemBlockWallOrFloor;
+use pocketmine\item\ItemIdentifier;
 use pocketmine\item\ItemIds;
 use pocketmine\nbt\tag\CompoundTag;
 
 class WrittenSign
 {
-    private bool $isStandable = false;
-    private bool $isHangable = false;
-    private SignText $signText;
+    private BaseSign $baseSign;
 
-    public function __construct(SignText $signText)
+    public function __construct(BaseSign $baseSign)
     {
-        $this->signText = $signText;
+        $this->baseSign = $baseSign;
     }
 
-    public function setStandable(bool $value = true)
-    {
-        $this->isStandable = $value;
-    }
-
-    public function setHangable(bool $value = true)
-    {
-        $this->isHangable = $value;
-    }
-
-    /**
-     * @noinspection PhpDeprecationInspection
-     */
     public function create(): Item
     {
-        $obj = ItemFactory::getInstance()->get(ItemIds::SIGN);
-        $name = "Written Sign";
-        if ($this->isStandable) {
-            $name = "Written Standing Sign";
-            $obj = ItemFactory::getInstance()->get(ItemIds::SIGN_POST);
-        }
-        if ($this->isHangable) {
-            $name = "Written Wall Sign";
-            $obj = ItemFactory::getInstance()->get(ItemIds::WALL_SIGN);
-        }
+        $obj = new ItemBlockWallOrFloor(
+            new ItemIdentifier(ItemIds::SIGN_POST, 0),
+            VanillaBlocks::OAK_SIGN(),
+            VanillaBlocks::OAK_WALL_SIGN()
+        );
+
+        $text = $this->baseSign->getText();
 
         $tag = new CompoundTag();
-        $tag->setString("Text1", $this->signText->getLine(0));
-        $tag->setString("Text2", $this->signText->getLine(1));
-        $tag->setString("Text3", $this->signText->getLine(2));
-        $tag->setString("Text4", $this->signText->getLine(3));
+        $tag->setString("Text1", $text->getLine(0));
+        $tag->setString("Text2", $text->getLine(1));
+        $tag->setString("Text3", $text->getLine(2));
+        $tag->setString("Text4", $text->getLine(3));
         $obj->setCustomBlockData($tag);
 
-        $obj->setCustomName($name);
-        $obj->setLore($this->signText->getLines());
+        $obj->setLore($text->getLines());
         return $obj;
     }
 }
