@@ -8,7 +8,7 @@
 |[![](https://poggit.pmmp.io/shield.state/SignEdit&style=flat-square)](https://poggit.pmmp.io/p/SignEdit)|[![](https://poggit.pmmp.io/shield.api/SignEdit&style=flat-square)](https://poggit.pmmp.io/p/SignEdit)|[![](https://poggit.pmmp.io/shield.dl.total/SignEdit&style=flat-square)](https://poggit.pmmp.io/p/SignEdit)|
 
 ![img](https://github.com/boymelancholy/boymelancholy.github.io/blob/master/images/project/signedit/banner.png?raw=true)  
-SignEdit for PocketMine-MP
+Sign editor for PocketMine-MP
 　  
 
 # Handleable item
