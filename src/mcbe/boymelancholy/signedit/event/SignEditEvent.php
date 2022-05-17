@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace mcbe\boymelancholy\signedit\event;
 
 use pocketmine\block\BaseSign;
-use pocketmine\event\Event;
+use pocketmine\event\player\PlayerEvent;
 
-abstract class SignEditEvent extends Event
+abstract class SignEditEvent extends PlayerEvent
 {
     protected BaseSign $signBlock;
 

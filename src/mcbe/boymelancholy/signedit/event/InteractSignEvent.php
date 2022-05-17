@@ -9,16 +9,9 @@ use pocketmine\player\Player;
 
 class InteractSignEvent extends SignEditEvent
 {
-    private Player $player;
-
     public function __construct(BaseSign $sign, Player $player)
     {
         $this->player = $player;
         $this->signBlock = $sign;
-    }
-
-    public function getPlayer(): Player
-    {
-        return $this->player;
     }
 }
