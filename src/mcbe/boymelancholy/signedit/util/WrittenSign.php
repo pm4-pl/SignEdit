@@ -6,7 +6,7 @@ namespace mcbe\boymelancholy\signedit\util;
 
 use pocketmine\block\utils\SignText;
 use pocketmine\item\Item;
-use pocketmine\item\ItemIdentifier;
+use pocketmine\item\ItemFactory;
 use pocketmine\item\ItemIds;
 use pocketmine\nbt\tag\CompoundTag;
 
@@ -31,19 +31,21 @@ class WrittenSign
         $this->isHangable = $value;
     }
 
+    /**
+     * @noinspection PhpDeprecationInspection
+     */
     public function create(): Item
     {
-        $id = 323;
-        $name = 'Written {%i} Sign';
+        $obj = ItemFactory::getInstance()->get(ItemIds::SIGN);
+        $name = 'Written Sign';
         if ($this->isStandable) {
-            $id = ItemIds::SIGN_POST;
-            $name = str_replace('{%i}', 'Standing', $name);
+            $name = 'Written Standing Sign';
+            $obj = ItemFactory::getInstance()->get(ItemIds::SIGN_POST);
         }
         if ($this->isHangable) {
-            $id = ItemIds::WALL_SIGN;
-            $name = str_replace('{%i}', 'Wall', $name);
+            $name = 'Written Wall Sign';
+            $obj = ItemFactory::getInstance()->get(ItemIds::WALL_SIGN);
         }
-        $obj = new Item(new ItemIdentifier($id, 0));
 
         $tag = new CompoundTag();
         $tag->setString('Text1', $this->signText->getLine(0));
