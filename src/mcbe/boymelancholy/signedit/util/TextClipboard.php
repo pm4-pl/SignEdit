@@ -11,6 +11,8 @@ class TextClipboard
 {
     /** @var SignText[] */
     private array $textClipboards;
+
+    /** @var Player */
     private Player $player;
 
     public function __construct(Player $player)
@@ -19,12 +21,19 @@ class TextClipboard
         $this->player = $player;
     }
 
-    public function getOwner(): String
+    /**
+     * @return string
+     */
+    public function getOwner(): string
     {
         return $this->player->getName();
     }
 
-    public function add(SignText $text): Bool
+    /**
+     * @param SignText $text
+     * @return bool
+     */
+    public function add(SignText $text): bool
     {
         foreach ($this->textClipboards as $signText) {
             if ($signText->getLines() === $text->getLines()) {
@@ -36,6 +45,10 @@ class TextClipboard
         return true;
     }
 
+    /**
+     * @param int $index
+     * @return SignText|null
+     */
     public function remove(int $index): ?SignText
     {
         if ($this->get($index) !== null) {
@@ -47,12 +60,19 @@ class TextClipboard
         return null;
     }
 
+    /**
+     * @param int $index
+     * @return SignText|null
+     */
     public function get(int $index): ?SignText
     {
         return $this->textClipboards[$index] ?? null;
     }
 
-    public function size(): Int
+    /**
+     * @return int
+     */
+    public function size(): int
     {
         return count($this->textClipboards);
     }
@@ -65,9 +85,14 @@ class TextClipboard
         return $this->textClipboards ?? [];
     }
 
+
     /** @var TextClipboard[] */
     public static array $clipboards = [];
 
+    /**
+     * @param Player $player
+     * @return TextClipboard
+     */
     public static function getClipBoard(Player $player): TextClipboard
     {
         foreach (self::$clipboards as $cb) {
@@ -75,11 +100,14 @@ class TextClipboard
                 return $cb;
             }
         }
-        $newCb = new TextClipboard($player);
-        self::$clipboards[] = $newCb;
-        return $newCb;
+        $newClipboards = new TextClipboard($player);
+        self::$clipboards[] = $newClipboards;
+        return $newClipboards;
     }
 
+    /**
+     * @param Player $player
+     */
     public static function deleteClipboard(Player $player)
     {
         for ($i = 0; $i < count(self::$clipboards); ++$i) {

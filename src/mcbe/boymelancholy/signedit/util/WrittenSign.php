@@ -12,6 +12,9 @@ use pocketmine\math\Facing;
 
 class WrittenSign
 {
+    private const UNIQUE_TAG = "sign_edit_unique_tag";
+
+    /** @var BaseSign */
     private BaseSign $baseSign;
 
     public function __construct(BaseSign $baseSign)
@@ -33,7 +36,7 @@ class WrittenSign
         );
 
         $obj->setCustomBlockData($pickedItem->getCustomBlockData());
-        $obj->getNamedTag()->setString("UNIQUE_TAG", $this->createUniqueTag());
+        $obj->getNamedTag()->setString(self::UNIQUE_TAG, $this->createUniqueTag());
         $lore = [$pickedItem->getName() . " (+Data)"];
         foreach ($this->baseSign->getText()->getLines() as $line) {
             $lore[] = " > §r§f" . $line;

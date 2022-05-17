@@ -29,7 +29,7 @@ class PlayerInteractListener implements Listener
         if ($action !== PlayerInteractEvent::RIGHT_CLICK_BLOCK) return;
 
         $player = $event->getPlayer();
-        if(InteractFlag::get($player) + 1 < microtime(true)){
+        if (InteractFlag::get($player) + 1 < microtime(true)) {
             $ev = new InteractSignEvent($block, $player);
             $ev->call();
             InteractFlag::update($player);
