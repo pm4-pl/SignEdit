@@ -50,21 +50,21 @@ class HomeForm implements Form
     public function jsonSerialize()
     {
         return [
-            'type' => 'form',
-            'title' => 'SignEdit',
-            'content' => 'Please select the process you wish to execute.',
-            'buttons' => [
+            "type" => "form",
+            "title" => "SignEdit",
+            "content" => "Please select the process you wish to execute.",
+            "buttons" => [
                 [
-                    'text' => 'Edit'
+                    "text" => "Edit"
                 ],
                 [
-                    'text' => 'Copy'
+                    "text" => "Copy"
                 ],
                 [
-                    'text' => 'Paste'
+                    "text" => "Paste"
                 ],
                 [
-                    'text' => 'Erase'
+                    "text" => "Erase"
                 ]
             ]
         ];

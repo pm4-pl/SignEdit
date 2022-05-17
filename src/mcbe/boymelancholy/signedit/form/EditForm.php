@@ -28,7 +28,7 @@ class EditForm implements Form
             return;
         }
         $this->sign->setText(new SignText($data));
-        $player->getWorld()->setBlock($this->sign->getPosition(), $this->sign, true);
+        $player->getWorld()->setBlock($this->sign->getPosition(), $this->sign);
     }
 
     /**
@@ -38,28 +38,28 @@ class EditForm implements Form
     {
         $signText = $this->sign->getText();
         return [
-            'type' => 'custom_form',
-            'title' => 'SignEdit > Edit',
-            'content' => [
+            "type" => "custom_form",
+            "title" => "SignEdit > Edit",
+            "content" => [
                 [
-                    'type' => 'input',
-                    'text' => 'Line 1',
-                    'default' => $signText->getLine(0)
+                    "type" => "input",
+                    "text" => "Line 1",
+                    "default" => $signText->getLine(0)
                 ],
                 [
-                    'type' => 'input',
-                    'text' => 'Line 2',
-                    'default' => $signText->getLine(1)
+                    "type" => "input",
+                    "text" => "Line 2",
+                    "default" => $signText->getLine(1)
                 ],
                 [
-                    'type' => 'input',
-                    'text' => 'Line 3',
-                    'default' => $signText->getLine(2)
+                    "type" => "input",
+                    "text" => "Line 3",
+                    "default" => $signText->getLine(2)
                 ],
                 [
-                    'type' => 'input',
-                    'text' => 'Line 4',
-                    'default' => $signText->getLine(3)
+                    "type" => "input",
+                    "text" => "Line 4",
+                    "default" => $signText->getLine(3)
                 ],
             ]
         ];

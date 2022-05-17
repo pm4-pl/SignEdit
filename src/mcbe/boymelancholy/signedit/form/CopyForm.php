@@ -23,7 +23,7 @@ class CopyForm implements Form
      */
     public function handleResponse(Player $player, $data): void
     {
-        if (!(bool) $data) {
+        if (!$data) {
             $player->sendForm(new HomeForm($this->sign));
             return;
         }
@@ -38,11 +38,11 @@ class CopyForm implements Form
     public function jsonSerialize()
     {
         return [
-            'type' => 'modal',
-            'title' => 'SignEdit > Copy',
-            'content' => 'Do you want to copy the text on this sign?',
-            'button1' => 'Yes',
-            'button2' => 'No'
+            "type" => "modal",
+            "title" => "SignEdit > Copy",
+            "content" => "Do you want to copy the text on this sign?",
+            "button1" => "Yes",
+            "button2" => "No"
         ];
     }
 }

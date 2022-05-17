@@ -41,11 +41,11 @@ class BreakForm implements Form
     public function jsonSerialize()
     {
         return [
-            'type' => 'modal',
-            'title' => 'SignEdit > Break',
-            'content' => 'Choose the format for dropping signs that hold text '." \n".' If you just want to break it, close this window.',
-            'button1' => 'Standing',
-            'button2' => 'Wall hanging'
+            "type" => "modal",
+            "title" => "SignEdit > Break",
+            "content" => "Choose the format for dropping signs that hold text\nIf you just want to break it, close this window.",
+            "button1" => "Standing",
+            "button2" => "Wall hanging"
         ];
     }
 }

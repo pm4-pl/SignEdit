@@ -23,7 +23,7 @@ class ClearForm implements Form
      */
     public function handleResponse(Player $player, $data): void
     {
-        if (!(bool) $data) {
+        if (!$data) {
             $player->sendForm(new HomeForm($this->sign));
             return;
         }
@@ -37,11 +37,11 @@ class ClearForm implements Form
     public function jsonSerialize()
     {
         return [
-            'type' => 'modal',
-            'title' => 'SignEdit > Erase',
-            'content' => 'Do you really want to remove all the text from the sign?',
-            'button1' => 'Yes',
-            'button2' => 'No'
+            "type" => "modal",
+            "title" => "SignEdit > Erase",
+            "content" => "Do you really want to remove all the text from the sign?",
+            "button1" => "Yes",
+            "button2" => "No"
         ];
     }
 }

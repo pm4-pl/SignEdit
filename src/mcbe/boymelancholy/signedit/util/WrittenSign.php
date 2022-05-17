@@ -37,21 +37,21 @@ class WrittenSign
     public function create(): Item
     {
         $obj = ItemFactory::getInstance()->get(ItemIds::SIGN);
-        $name = 'Written Sign';
+        $name = "Written Sign";
         if ($this->isStandable) {
-            $name = 'Written Standing Sign';
+            $name = "Written Standing Sign";
             $obj = ItemFactory::getInstance()->get(ItemIds::SIGN_POST);
         }
         if ($this->isHangable) {
-            $name = 'Written Wall Sign';
+            $name = "Written Wall Sign";
             $obj = ItemFactory::getInstance()->get(ItemIds::WALL_SIGN);
         }
 
         $tag = new CompoundTag();
-        $tag->setString('Text1', $this->signText->getLine(0));
-        $tag->setString('Text2', $this->signText->getLine(1));
-        $tag->setString('Text3', $this->signText->getLine(2));
-        $tag->setString('Text4', $this->signText->getLine(3));
+        $tag->setString("Text1", $this->signText->getLine(0));
+        $tag->setString("Text2", $this->signText->getLine(1));
+        $tag->setString("Text3", $this->signText->getLine(2));
+        $tag->setString("Text4", $this->signText->getLine(3));
         $obj->setCustomBlockData($tag);
 
         $obj->setCustomName($name);
