@@ -20,4 +20,4 @@ Feather
 - Copy all the text of sign.
 - Paste all the text to other sign.
 - Erase all the text of sign.
-- Create written sign.
+- Create written sign (All tree type supported).
