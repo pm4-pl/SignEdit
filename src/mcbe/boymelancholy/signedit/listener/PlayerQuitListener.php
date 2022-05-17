@@ -15,10 +15,10 @@
  */
 declare(strict_types=1);
 
-namespace boymelancholy\signedit\listener;
+namespace mcbe\boymelancholy\signedit\listener;
 
-use boymelancholy\signedit\util\InteractFlag;
-use boymelancholy\signedit\util\TextClipboard;
+use mcbe\boymelancholy\signedit\util\InteractFlag;
+use mcbe\boymelancholy\signedit\util\TextClipboard;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerQuitEvent;
 

@@ -15,7 +15,7 @@
  */
 declare(strict_types=1);
 
-namespace boymelancholy\signedit\lang;
+namespace mcbe\boymelancholy\signedit\lang;
 
 class Language
 {

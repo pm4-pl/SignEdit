@@ -15,12 +15,12 @@
  */
 declare(strict_types=1);
 
-namespace boymelancholy\signedit\listener;
+namespace mcbe\boymelancholy\signedit\listener;
 
-use boymelancholy\signedit\event\BreakSignEvent;
-use boymelancholy\signedit\event\InteractSignEvent;
-use boymelancholy\signedit\form\HomeForm;
-use boymelancholy\signedit\util\WrittenSign;
+use mcbe\boymelancholy\signedit\event\BreakSignEvent;
+use mcbe\boymelancholy\signedit\event\InteractSignEvent;
+use mcbe\boymelancholy\signedit\form\HomeForm;
+use mcbe\boymelancholy\signedit\util\WrittenSign;
 use pocketmine\event\Listener;
 
 class SignEditListener implements Listener

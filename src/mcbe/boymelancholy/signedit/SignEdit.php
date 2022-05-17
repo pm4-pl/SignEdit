@@ -15,13 +15,13 @@
  */
 declare(strict_types=1);
 
-namespace boymelancholy\signedit;
+namespace mcbe\boymelancholy\signedit;
 
-use boymelancholy\signedit\lang\Language;
-use boymelancholy\signedit\listener\PlayerBlockBreakListener;
-use boymelancholy\signedit\listener\PlayerInteractListener;
-use boymelancholy\signedit\listener\PlayerQuitListener;
-use boymelancholy\signedit\listener\SignEditListener;
+use mcbe\boymelancholy\signedit\lang\Language;
+use mcbe\boymelancholy\signedit\listener\PlayerBlockBreakListener;
+use mcbe\boymelancholy\signedit\listener\PlayerInteractListener;
+use mcbe\boymelancholy\signedit\listener\PlayerQuitListener;
+use mcbe\boymelancholy\signedit\listener\SignEditListener;
 use pocketmine\plugin\PluginBase;
 
 class SignEdit extends PluginBase

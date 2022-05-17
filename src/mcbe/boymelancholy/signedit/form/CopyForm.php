@@ -15,15 +15,15 @@
  */
 declare(strict_types=1);
 
-namespace boymelancholy\signedit\form;
+namespace mcbe\boymelancholy\signedit\form;
 
-use boymelancholy\signedit\lang\Language;
+use mcbe\boymelancholy\signedit\lang\Language;
+use mcbe\boymelancholy\signedit\util\TextClipboard;
 use pocketmine\block\BaseSign;
-use pocketmine\block\utils\SignText;
 use pocketmine\form\Form;
 use pocketmine\player\Player;
 
-class EditForm implements Form
+class CopyForm implements Form
 {
     private BaseSign $sign;
 
@@ -34,26 +34,22 @@ class EditForm implements Form
 
     public function handleResponse(Player $player, $data): void
     {
-        if ($data === null) {
+        if (!$data) {
             $player->sendForm(new HomeForm($this->sign));
             return;
         }
-        $this->sign->setText(new SignText($data));
-        $player->getWorld()->setBlock($this->sign->getPosition(), $this->sign);
+        $signText = $this->sign->getText();
+        $clipboard = TextClipboard::getClipBoard($player);
+        $clipboard->add($signText);
     }
 
     public function jsonSerialize()
     {
-        $signText = $this->sign->getText();
-
-        $formArray["type"] = "custom_form";
-        $formArray["title"] = Language::get("form.edit.title");
-        for ($i = 0; $i < 4; ++$i) {
-            $content["type"] = "input";
-            $content["text"] = Language::get("form.edit.label", [(string)($i + 1)]);
-            $content["default"] = $signText->getLine($i);
-            $formArray["content"][] = $content;
-        }
+        $formArray["type"] = "modal";
+        $formArray["title"] = Language::get("form.copy.title");
+        $formArray["content"] = Language::get("form.copy.content");
+        $formArray["button1"] = Language::get("form.copy.button1");
+        $formArray["button2"] = Language::get("form.copy.button2");
         return $formArray;
     }
 }

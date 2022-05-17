@@ -15,10 +15,10 @@
  */
 declare(strict_types=1);
 
-namespace boymelancholy\signedit\listener;
+namespace mcbe\boymelancholy\signedit\listener;
 
-use boymelancholy\signedit\event\InteractSignEvent;
-use boymelancholy\signedit\util\InteractFlag;
+use mcbe\boymelancholy\signedit\event\InteractSignEvent;
+use mcbe\boymelancholy\signedit\util\InteractFlag;
 use pocketmine\block\BaseSign;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerInteractEvent;

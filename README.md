@@ -15,9 +15,18 @@ Sign editor for PocketMine-MP
 Feather
 　  
 
+# Configuration
+```yaml
+language: eng
+```
+Now this plugin supported two language, Japanese (jpn) and English (eng).  
+If you support me about language, please send me a new language ini file by pull request.  
+  
+
 # Features
 - Edit any line of sign.
 - Copy all the text of sign.
 - Paste all the text to other sign.
 - Erase all the text of sign.
 - Create written sign (All tree type supported).
+- Multi language

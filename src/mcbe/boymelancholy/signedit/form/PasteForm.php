@@ -15,10 +15,10 @@
  */
 declare(strict_types=1);
 
-namespace boymelancholy\signedit\form;
+namespace mcbe\boymelancholy\signedit\form;
 
-use boymelancholy\signedit\lang\Language;
-use boymelancholy\signedit\util\TextClipboard;
+use mcbe\boymelancholy\signedit\lang\Language;
+use mcbe\boymelancholy\signedit\util\TextClipboard;
 use pocketmine\block\BaseSign;
 use pocketmine\form\Form;
 use pocketmine\player\Player;
