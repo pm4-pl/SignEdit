@@ -5,12 +5,11 @@ declare(strict_types=1);
 namespace mcbe\boymelancholy\signedit\util;
 
 use pocketmine\block\BaseSign;
-use pocketmine\block\VanillaBlocks;
 use pocketmine\item\Item;
 use pocketmine\item\ItemBlockWallOrFloor;
 use pocketmine\item\ItemIdentifier;
 use pocketmine\item\ItemIds;
-use pocketmine\nbt\tag\CompoundTag;
+use pocketmine\math\Facing;
 
 class WrittenSign
 {
@@ -21,24 +20,35 @@ class WrittenSign
         $this->baseSign = $baseSign;
     }
 
-    public function create(): Item
+    /**
+     * @return ItemBlockWallOrFloor
+     */
+    public function create(): ItemBlockWallOrFloor
     {
+        $pickedItem = $this->baseSign->getPickedItem(true);
+
         $obj = new ItemBlockWallOrFloor(
             new ItemIdentifier(ItemIds::SIGN_POST, 0),
-            VanillaBlocks::OAK_SIGN(),
-            VanillaBlocks::OAK_WALL_SIGN()
+            $pickedItem->getBlock(),
+            $pickedItem->getBlock(Facing::EAST)
         );
 
-        $text = $this->baseSign->getText();
-
-        $tag = new CompoundTag();
-        $tag->setString("Text1", $text->getLine(0));
-        $tag->setString("Text2", $text->getLine(1));
-        $tag->setString("Text3", $text->getLine(2));
-        $tag->setString("Text4", $text->getLine(3));
-        $obj->setCustomBlockData($tag);
-
-        $obj->setLore($text->getLines());
+        $obj->setCustomBlockData($pickedItem->getCustomBlockData());
+        $obj->getNamedTag()->setString("UNIQUE_TAG", $this->createUniqueTag());
+        $lore = [$pickedItem->getName() . " (+Data)"];
+        foreach ($this->baseSign->getText()->getLines() as $line) {
+            $lore[] = " > §r§f" . $line;
+        }
+        $obj->setLore($lore);
         return $obj;
+    }
+
+    /**
+     * @return string
+     */
+    private function createUniqueTag() : string
+    {
+        $text = implode("+", $this->baseSign->getText()->getLines());
+        return strtolower(preg_replace("/§./", "", $text));
     }
 }
