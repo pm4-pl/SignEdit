@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace mcbe\boymelancholy\signedit\util;
+namespace boymelancholy\signedit\util;
 
 use pocketmine\block\utils\SignText;
 use pocketmine\player\Player;

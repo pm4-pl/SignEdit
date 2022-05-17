@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace mcbe\boymelancholy\signedit\form;
+namespace boymelancholy\signedit\form;
 
 use pocketmine\block\BaseSign;
 use pocketmine\form\Form;
@@ -19,9 +19,8 @@ class HomeForm implements Form
 
     public function handleResponse(Player $player, $data): void
     {
-        if ($data === null) {
-            return;
-        }
+        if ($data === null) return;
+
         switch ((int) $data) {
             case 0:
                 $player->sendForm(new EditForm($this->sign));

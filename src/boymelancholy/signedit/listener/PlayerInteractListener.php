@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace mcbe\boymelancholy\signedit\listener;
+namespace boymelancholy\signedit\listener;
 
-use mcbe\boymelancholy\signedit\event\InteractSignEvent;
-use mcbe\boymelancholy\signedit\util\InteractFlag;
+use boymelancholy\signedit\event\InteractSignEvent;
+use boymelancholy\signedit\util\InteractFlag;
 use pocketmine\block\BaseSign;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerInteractEvent;

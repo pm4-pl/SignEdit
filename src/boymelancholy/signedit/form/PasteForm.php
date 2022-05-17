@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace mcbe\boymelancholy\signedit\form;
+namespace boymelancholy\signedit\form;
 
-use mcbe\boymelancholy\signedit\util\TextClipboard;
+use boymelancholy\signedit\util\TextClipboard;
 use pocketmine\block\BaseSign;
 use pocketmine\form\Form;
 use pocketmine\player\Player;

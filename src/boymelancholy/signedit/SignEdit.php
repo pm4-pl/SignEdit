@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace mcbe\boymelancholy\signedit;
+namespace boymelancholy\signedit;
 
-use mcbe\boymelancholy\signedit\listener\PlayerBlockBreakListener;
-use mcbe\boymelancholy\signedit\listener\PlayerInteractListener;
-use mcbe\boymelancholy\signedit\listener\PlayerQuitListener;
-use mcbe\boymelancholy\signedit\listener\SignEditListener;
+use boymelancholy\signedit\listener\PlayerBlockBreakListener;
+use boymelancholy\signedit\listener\PlayerInteractListener;
+use boymelancholy\signedit\listener\PlayerQuitListener;
+use boymelancholy\signedit\listener\SignEditListener;
 use pocketmine\plugin\PluginBase;
 
 class SignEdit extends PluginBase

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace mcbe\boymelancholy\signedit\util;
+namespace boymelancholy\signedit\util;
 
 use pocketmine\block\BaseSign;
 use pocketmine\item\ItemBlockWallOrFloor;

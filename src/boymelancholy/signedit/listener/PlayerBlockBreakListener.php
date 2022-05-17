@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace mcbe\boymelancholy\signedit\listener;
+namespace boymelancholy\signedit\listener;
 
-use mcbe\boymelancholy\signedit\event\BreakSignEvent;
+use boymelancholy\signedit\event\BreakSignEvent;
 use pocketmine\block\BaseSign;
 use pocketmine\event\block\BlockBreakEvent;
 use pocketmine\event\Listener;

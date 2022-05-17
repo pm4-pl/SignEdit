@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace mcbe\boymelancholy\signedit\form;
+namespace boymelancholy\signedit\form;
 
+use boymelancholy\signedit\util\TextClipboard;
 use pocketmine\block\BaseSign;
-use pocketmine\block\utils\SignText;
 use pocketmine\form\Form;
 use pocketmine\player\Player;
 
-class ClearForm implements Form
+class CopyForm implements Form
 {
     private BaseSign $sign;
 
@@ -24,15 +24,16 @@ class ClearForm implements Form
             $player->sendForm(new HomeForm($this->sign));
             return;
         }
-        $this->sign->setText(new SignText());
-        $player->getWorld()->setBlock($this->sign->getPosition(), $this->sign);
+        $signText = $this->sign->getText();
+        $clipboard = TextClipboard::getClipBoard($player);
+        $clipboard->add($signText);
     }
 
     public function jsonSerialize()
     {
         $formArray["type"] = "modal";
-        $formArray["title"] = "SignEdit > Erase";
-        $formArray["content"] = "Do you really want to remove all the text from the sign?";
+        $formArray["title"] = "SignEdit > Copy";
+        $formArray["content"] = "Do you want to copy the text on this sign?";
         $formArray["button1"] = "Yes";
         $formArray["button2"] = "No";
         return $formArray;

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace mcbe\boymelancholy\signedit\event;
+namespace boymelancholy\signedit\event;
 
 use pocketmine\block\BaseSign;
 use pocketmine\event\player\PlayerEvent;

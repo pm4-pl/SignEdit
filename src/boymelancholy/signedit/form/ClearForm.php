@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace mcbe\boymelancholy\signedit\form;
+namespace boymelancholy\signedit\form;
 
 use pocketmine\block\BaseSign;
 use pocketmine\block\utils\SignText;
 use pocketmine\form\Form;
 use pocketmine\player\Player;
 
-class EditForm implements Form
+class ClearForm implements Form
 {
     private BaseSign $sign;
 
@@ -20,26 +20,21 @@ class EditForm implements Form
 
     public function handleResponse(Player $player, $data): void
     {
-        if ($data === null) {
+        if (!$data) {
             $player->sendForm(new HomeForm($this->sign));
             return;
         }
-        $this->sign->setText(new SignText($data));
+        $this->sign->setText(new SignText());
         $player->getWorld()->setBlock($this->sign->getPosition(), $this->sign);
     }
 
     public function jsonSerialize()
     {
-        $signText = $this->sign->getText();
-
-        $formArray["type"] = "custom_form";
-        $formArray["title"] = "SignEdit > Edit";
-        for ($i = 0; $i < 4; ++$i) {
-            $content["type"] = "input";
-            $content["text"] = "Line " . ($i + 1);
-            $content["default"] = $signText->getLine($i);
-            $formArray["content"][] = $content;
-        }
+        $formArray["type"] = "modal";
+        $formArray["title"] = "SignEdit > Erase";
+        $formArray["content"] = "Do you really want to remove all the text from the sign?";
+        $formArray["button1"] = "Yes";
+        $formArray["button2"] = "No";
         return $formArray;
     }
 }
