@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace boymelancholy\signedit\form;
 
+use boymelancholy\signedit\lang\Language;
 use pocketmine\block\BaseSign;
 use pocketmine\block\utils\SignText;
 use pocketmine\form\Form;
@@ -44,10 +45,10 @@ class ClearForm implements Form
     public function jsonSerialize()
     {
         $formArray["type"] = "modal";
-        $formArray["title"] = "SignEdit > Erase";
-        $formArray["content"] = "Do you really want to remove all the text from the sign?";
-        $formArray["button1"] = "Yes";
-        $formArray["button2"] = "No";
+        $formArray["title"] = Language::get("form.clear.title");
+        $formArray["content"] = Language::get("form.clear.content");
+        $formArray["button1"] = Language::get("form.clear.button1");
+        $formArray["button2"] = Language::get("form.clear.button2");
         return $formArray;
     }
 }

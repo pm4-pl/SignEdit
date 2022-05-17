@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace boymelancholy\signedit\form;
 
+use boymelancholy\signedit\lang\Language;
 use boymelancholy\signedit\util\TextClipboard;
 use pocketmine\block\BaseSign;
 use pocketmine\form\Form;
@@ -54,15 +55,15 @@ class PasteForm implements Form
     public function jsonSerialize()
     {
         $clipboard = TextClipboard::getClipBoard($this->player);
-        $formJson["title"] = "SignEdit　> Paste";
+        $formJson["title"] = Language::get("form.paste.title");
         if ($clipboard->size() == 0) {
             $formJson["type"] = "modal";
-            $formJson["content"] = "Clipboard does not have any texts.";
-            $formJson["button1"] = "Back";
-            $formJson["button2"] = "Exit";
+            $formJson["content"] = Language::get("form.cannot_paste.content");
+            $formJson["button1"] = Language::get("form.cannot_paste.button1");
+            $formJson["button2"] = Language::get("form.cannot_paste.button2");
         } else {
             $formJson["type"] = "form";
-            $formJson["content"] = "Select the text you wish to paste.";
+            $formJson["content"] = Language::get("form.paste.content");
             foreach ($clipboard->getAll() as $item) {
                 $formJson["buttons"][]["text"] = implode("/", $item->getLines());
             }
