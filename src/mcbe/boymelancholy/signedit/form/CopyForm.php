@@ -32,7 +32,10 @@ class CopyForm extends SignEditForm
 
     public function handleResponse(Player $player, $data) : void
     {
-        parent::handleResponse($player, $data);
+        if ($data === null) {
+            $this->backToHome($player);
+            return;
+        }
 
         $signText = $this->sign->getText();
         $clipboard = TextClipboard::getClipBoard($player);

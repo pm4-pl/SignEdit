@@ -32,7 +32,10 @@ class EditForm extends SignEditForm
 
     public function handleResponse(Player $player, $data): void
     {
-        parent::handleResponse($player, $data);
+        if ($data === null) {
+            $this->backToHome($player);
+            return;
+        }
 
         $this->sign->setText(new SignText($data));
         $player->getWorld()->setBlock($this->sign->getPosition(), $this->sign);

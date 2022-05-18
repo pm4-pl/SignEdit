@@ -35,12 +35,8 @@ class PasteForm extends SignEditForm
 
     public function handleResponse(Player $player, $data) : void
     {
-        parent::handleResponse($player, $data);
-
         if (is_bool($data)) {
-            if ($data) {
-                $player->sendForm(new HomeForm($this->sign));
-            }
+            if ($data) $this->backToHome($player);
             return;
         }
 

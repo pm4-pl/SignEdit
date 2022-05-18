@@ -35,11 +35,18 @@ class SignPainter
     /** @var TreeType|null */
     private ?TreeType $treeType = null;
 
-    public function __construct(BaseSign $baseSign)
+    public function __construct()
     {
         if (!self::$ready) self::preparePallet();
+    }
 
+    /**
+     * @param BaseSign $baseSign
+     */
+    public function setBaseSign(BaseSign $baseSign)
+    {
         $this->baseSign = $baseSign;
+
         foreach (self::$floorSigns as $floorSign) {
             if ($floorSign->isSameType($baseSign)) {
                 $this->isFloor = true;

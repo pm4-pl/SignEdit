@@ -32,7 +32,10 @@ class PaintForm extends SignEditForm
 
     public function handleResponse(Player $player, $data) : void
     {
-        parent::handleResponse($player, $data);
+        if ($data === null) {
+            $this->backToHome($player);
+            return;
+        }
 
         $filteredTypes = array_filter(
             TreeType::getAll(),
@@ -43,7 +46,8 @@ class PaintForm extends SignEditForm
         if (!isset($filteredTypes[0])) return;
         $treeType = $filteredTypes[0];
 
-        $painter = new SignPainter($this->sign);
+        $painter = new SignPainter();
+        $painter->setBaseSign($this->sign);
         $painter->setTreeType($treeType);
         $painter->paint();
     }
