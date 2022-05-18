@@ -35,8 +35,8 @@ class PasteForm extends SignEditForm
 
     public function handleResponse(Player $player, $data) : void
     {
-        if (is_bool($data)) {
-            if ($data) $this->backToHome($player);
+        if ($data === true || $data === null) {
+            $this->backToHome($player);
             return;
         }
 
