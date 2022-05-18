@@ -16,7 +16,7 @@ Sign editor for PocketMine-MP
 - Copy all the text of sign.
 - Paste all the text to other sign.
 - Erase all the text of sign.
-- Change wood type of sign.
+- Change tree type of sign.
 - Drop written sign (All tree type supported).
 - Multi language  
 ㅤ  
@@ -36,14 +36,3 @@ language: eng
 ```
 Now this plugin supported two language, Japanese (jpn) and English (eng).  
 If you support me about language, please send me a new language ini file by pull request.
-ㅤ  
-
-# GIFs
-
-|Feature|Gif|
-|:---:|:---:|
-|Edit|<img src="https://github.com/boymelancholy/boymelancholy.github.io/blob/master/gif/signedit/edit.gif" width=400 height=230>|
-|Paint|<img src="https://github.com/boymelancholy/boymelancholy.github.io/blob/master/gif/signedit/paint.gif" width=400 height=230>|
-|Copy & Paste|<img src="https://github.com/boymelancholy/boymelancholy.github.io/blob/master/gif/signedit/copy_paste.gif" width=400 height=230>|
-|Clear|<img src="https://github.com/boymelancholy/boymelancholy.github.io/blob/master/gif/signedit/clear.gif" width=400 height=230>|
-|Break|<img src="https://github.com/boymelancholy/boymelancholy.github.io/blob/master/gif/signedit/break.gif" width=400 height=230>|
