@@ -17,20 +17,26 @@ declare(strict_types=1);
 
 namespace mcbe\boymelancholy\signedit\lang;
 
+use pocketmine\plugin\PluginBase;
+
 class Language
 {
     /** @var string[] */
     private static array $langTexts = [];
 
-    public static function load(mixed $resources, string $lang)
+    public static function load(PluginBase $pluginBase, string $lang)
     {
-        foreach ($resources as $resource) {
-            if ($resource->getBasename() === $lang . ".ini") {
-                $parsed = parse_ini_file($resource->getRealPath(), false, INI_SCANNER_RAW);
-                self::$langTexts = $parsed;
-                break;
+        $path = $pluginBase->getDataFolder() . $lang . ".ini";
+        if (!file_exists($path)) {
+            foreach ($pluginBase->getResources() as $resource) {
+                if ($resource->getBasename() === $lang . ".ini") {
+                    copy($resource->getRealPath(), $path);
+                    break;
+                }
             }
         }
+        $parsed = parse_ini_file($path, false, INI_SCANNER_RAW);
+        self::$langTexts = $parsed;
     }
 
     /**

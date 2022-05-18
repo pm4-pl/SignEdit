@@ -35,7 +35,7 @@ class SignEdit extends PluginBase
     private function registerLanguage()
     {
         $lang = $this->getConfig()->get("language", "eng");
-        Language::load($this->getResources(), $lang);
+        Language::load($this, $lang);
 
         $langName = Language::get("language.name");
         $message = Language::get("language.selected", [$langName, $lang]);
