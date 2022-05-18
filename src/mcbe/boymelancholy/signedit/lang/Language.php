@@ -20,11 +20,17 @@ namespace mcbe\boymelancholy\signedit\lang;
 class Language
 {
     /** @var string[] */
-    private static array $langTexts;
+    private static array $langTexts = [];
 
-    public static function load(array $langTexts)
+    public static function load(mixed $resources, string $lang)
     {
-        self::$langTexts = $langTexts;
+        foreach ($resources as $resource) {
+            if ($resource->getBasename() === $lang . ".ini") {
+                $parsed = parse_ini_file($resource->getRealPath(), false, INI_SCANNER_RAW);
+                self::$langTexts = $parsed;
+                break;
+            }
+        }
     }
 
     /**

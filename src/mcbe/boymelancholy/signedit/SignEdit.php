@@ -26,7 +26,7 @@ use pocketmine\plugin\PluginBase;
 
 class SignEdit extends PluginBase
 {
-    public function onEnable(): void
+    public function onEnable() : void
     {
         $this->registerLanguage();
         $this->registerListeners();
@@ -34,18 +34,11 @@ class SignEdit extends PluginBase
 
     private function registerLanguage()
     {
-        $langName = $this->getConfig()->get("language", "eng");
-        foreach ($this->getResources() as $resource) {
-            if ($resource->getExtension() === "ini") {
-                if ($resource->getBasename() === $langName . ".ini") {
-                    $parsed = parse_ini_file($resource->getRealPath(), false, INI_SCANNER_RAW);
-                    Language::load($parsed);
-                    break;
-                }
-            }
-        }
+        $lang = $this->getConfig()->get("language", "eng");
+        Language::load($this->getResources(), $lang);
 
-        $message = Language::get("language.selected", [Language::get("language.name"), $langName]);
+        $langName = Language::get("language.name");
+        $message = Language::get("language.selected", [$langName, $lang]);
         $this->getLogger()->info($message);
     }
 
