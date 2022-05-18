@@ -37,14 +37,14 @@ class PaintForm extends SignEditForm
             return;
         }
 
-        $filteredTypes = array_filter(
-            TreeType::getAll(),
-            function (TreeType $type) use($data) {
-                return $type->getMagicNumber() == (int) $data;
+        $treeType = null;
+        foreach (TreeType::getAll() as $type) {
+            if ($type->getMagicNumber() === (int) $data) {
+                $treeType = $type;
+                break;
             }
-        );
-        if (!isset($filteredTypes[0])) return;
-        $treeType = $filteredTypes[0];
+        }
+        if ($treeType === null) return;
 
         $painter = new SignPainter();
         $painter->setBaseSign($this->sign);

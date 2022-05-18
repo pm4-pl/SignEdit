@@ -18,8 +18,16 @@ declare(strict_types=1);
 namespace mcbe\boymelancholy\signedit\util;
 
 use pocketmine\block\BaseSign;
+use pocketmine\block\Block;
+use pocketmine\block\BlockIdentifier;
+use pocketmine\block\FloorSign;
+use pocketmine\block\tile\Sign;
+use pocketmine\block\tile\TileFactory;
 use pocketmine\block\utils\TreeType;
 use pocketmine\block\VanillaBlocks;
+use pocketmine\block\WallSign;
+use pocketmine\item\ItemBlock;
+use pocketmine\item\ItemIdentifier;
 
 class SignPainter
 {
@@ -80,9 +88,33 @@ class SignPainter
         $blocks = $this->isFloor ? self::$floorSigns : self::$wallSigns;
 
         if (!isset($blocks[$key])) return false;
+        $base = $blocks[$key];
 
-        $sign = $blocks[$key];
+        $identifier = new BlockIdentifier(
+            $base->getId(),
+            $this->baseSign->getIdInfo()->getVariant(),
+            $base->asItem()->getId(),
+            Sign::class
+        );
+
+        $sign = match (true) {
+            $base instanceof FloorSign => new FloorSign($identifier, $base->getName(), $base->getBreakInfo()),
+            $base instanceof WallSign => new WallSign($identifier, $base->getName(), $base->getBreakInfo()),
+            default => $this->baseSign
+        };
         $sign->setText($this->baseSign->getText());
+
+        if ($base instanceof FloorSign) {
+            if ($this->baseSign instanceof FloorSign) {
+                $sign->setRotation($this->baseSign->getRotation());
+            }
+        } else {
+            if ($base instanceof WallSign) {
+                if ($this->baseSign instanceof WallSign) {
+                    $sign->readStateFromData($sign->getId(), $this->baseSign->getMeta());
+                }
+            }
+        }
 
         $pos = $this->baseSign->getPosition();
         $world = $pos->getWorld();
