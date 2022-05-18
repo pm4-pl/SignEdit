@@ -23,27 +23,26 @@ use pocketmine\block\BaseSign;
 use pocketmine\form\Form;
 use pocketmine\player\Player;
 
-class CopyForm implements Form
+class CopyForm extends SignEditForm
 {
-    private BaseSign $sign;
-
     public function __construct(BaseSign $sign)
     {
         $this->sign = $sign;
     }
 
-    public function handleResponse(Player $player, $data): void
+    public function handleResponse(Player $player, $data) : void
     {
-        if (!$data) {
-            $player->sendForm(new HomeForm($this->sign));
+        if ($data === null) {
+            $this->backToHome($player);
             return;
         }
+
         $signText = $this->sign->getText();
         $clipboard = TextClipboard::getClipBoard($player);
         $clipboard->add($signText);
     }
 
-    public function jsonSerialize()
+    public function jsonSerialize() : array
     {
         $formArray["type"] = "modal";
         $formArray["title"] = Language::get("form.copy.title");

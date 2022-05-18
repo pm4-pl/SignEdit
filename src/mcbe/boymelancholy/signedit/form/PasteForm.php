@@ -20,12 +20,11 @@ namespace mcbe\boymelancholy\signedit\form;
 use mcbe\boymelancholy\signedit\lang\Language;
 use mcbe\boymelancholy\signedit\util\TextClipboard;
 use pocketmine\block\BaseSign;
-use pocketmine\form\Form;
 use pocketmine\player\Player;
 
-class PasteForm implements Form
+class PasteForm extends SignEditForm
 {
-    private BaseSign $sign;
+    /** @var Player */
     private Player $player;
 
     public function __construct(BaseSign $sign, Player $player)
@@ -34,16 +33,10 @@ class PasteForm implements Form
         $this->player = $player;
     }
 
-    public function handleResponse(Player $player, $data): void
+    public function handleResponse(Player $player, $data) : void
     {
-        if ($data === null) {
-            $player->sendForm(new HomeForm($this->sign));
-            return;
-        }
-        if (is_bool($data)) {
-            if ($data) {
-                $player->sendForm(new HomeForm($this->sign));
-            }
+        if ($data === true || $data === null) {
+            $this->backToHome($player);
             return;
         }
 
@@ -52,7 +45,7 @@ class PasteForm implements Form
         $player->getWorld()->setBlock($this->sign->getPosition(), $this->sign);
     }
 
-    public function jsonSerialize()
+    public function jsonSerialize() : array
     {
         $clipboard = TextClipboard::getClipBoard($this->player);
         $formJson["title"] = Language::get("form.paste.title");

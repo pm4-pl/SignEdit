@@ -22,39 +22,32 @@ use pocketmine\block\BaseSign;
 use pocketmine\form\Form;
 use pocketmine\player\Player;
 
-class HomeForm implements Form
+class HomeForm extends SignEditForm
 {
-    private BaseSign $sign;
-
     public function __construct(BaseSign $sign)
     {
         $this->sign = $sign;
     }
 
-    public function handleResponse(Player $player, $data): void
+    public function handleResponse(Player $player, $data) : void
     {
         if ($data === null) return;
 
-        switch ((int) $data) {
-            case 0:
-                $player->sendForm(new EditForm($this->sign));
-                break;
+        $form = match ((int) $data) {
+            0 => new EditForm($this->sign),
+            1 => new CopyForm($this->sign),
+            2 => new PasteForm($this->sign, $player),
+            3 => new PaintForm($this->sign),
+            4 => new ClearForm($this->sign),
+            default => null
+        };
 
-            case 1:
-                $player->sendForm(new CopyForm($this->sign));
-                break;
+        if ($form === null) return;
 
-            case 2:
-                $player->sendForm(new PasteForm($this->sign, $player));
-                break;
-
-            case 3:
-                $player->sendForm(new ClearForm($this->sign));
-                break;
-        }
+        $player->sendForm($form);
     }
 
-    public function jsonSerialize()
+    public function jsonSerialize() : array
     {
         $formArray["type"] = "form";
         $formArray["title"] = Language::get("form.home.title");
@@ -62,6 +55,7 @@ class HomeForm implements Form
         $formArray["buttons"][]["text"] = Language::get("form.home.button.edit");
         $formArray["buttons"][]["text"] = Language::get("form.home.button.copy");
         $formArray["buttons"][]["text"] = Language::get("form.home.button.paste");
+        $formArray["buttons"][]["text"] = Language::get("form.home.button.paint");
         $formArray["buttons"][]["text"] = Language::get("form.home.button.clear");
         return $formArray;
     }

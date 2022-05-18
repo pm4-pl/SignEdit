@@ -8,25 +8,42 @@
 |[![](https://poggit.pmmp.io/shield.state/SignEdit&style=flat-square)](https://poggit.pmmp.io/p/SignEdit)|[![](https://poggit.pmmp.io/shield.api/SignEdit&style=flat-square)](https://poggit.pmmp.io/p/SignEdit)|[![](https://poggit.pmmp.io/shield.dl.total/SignEdit&style=flat-square)](https://poggit.pmmp.io/p/SignEdit)|
 
 ![img](https://github.com/boymelancholy/boymelancholy.github.io/blob/master/images/project/signedit/banner.png?raw=true)  
-Sign editor for PocketMine-MP
-　  
-
-# Handleable item
-Feather
-　  
-
-# Configuration
-```yaml
-language: eng
-```
-Now this plugin supported two language, Japanese (jpn) and English (eng).  
-If you support me about language, please send me a new language ini file by pull request.  
-  
+Sign editor for PocketMine-MP  
+ㅤ  
 
 # Features
 - Edit any line of sign.
 - Copy all the text of sign.
 - Paste all the text to other sign.
 - Erase all the text of sign.
-- Create written sign (All tree type supported).
-- Multi language
+- Change wood type of sign.
+- Drop written sign (All tree type supported).
+- Multi language  
+ㅤ  
+
+# Item
+Feather (288:0)  
+ㅤ  
+
+# How
+Touch the sign with a feather to open the form.  
+If you want to get a written sign, broken it by a feather. Then it will drop.  
+ㅤ  
+
+# Configuration
+```yaml
+language: eng
+```
+Now this plugin supported two language, Japanese (jpn) and English (eng).  
+If you support me about language, please send me a new language ini file by pull request.
+ㅤ  
+
+# GIFs
+
+|Feature|Gif|
+|:---:|:---:|
+|Edit|<img src="https://github.com/boymelancholy/boymelancholy.github.io/blob/master/gif/signedit/edit.gif" width=400 height=230>|
+|Paint|<img src="https://github.com/boymelancholy/boymelancholy.github.io/blob/master/gif/signedit/paint.gif" width=400 height=230>|
+|Copy & Paste|<img src="https://github.com/boymelancholy/boymelancholy.github.io/blob/master/gif/signedit/copy_paste.gif" width=400 height=230>|
+|Clear|<img src="https://github.com/boymelancholy/boymelancholy.github.io/blob/master/gif/signedit/clear.gif" width=400 height=230>|
+|Break|<img src="https://github.com/boymelancholy/boymelancholy.github.io/blob/master/gif/signedit/break.gif" width=400 height=230>|
