@@ -18,16 +18,11 @@ declare(strict_types=1);
 namespace mcbe\boymelancholy\signedit\util;
 
 use pocketmine\block\BaseSign;
-use pocketmine\block\Block;
 use pocketmine\block\BlockIdentifier;
 use pocketmine\block\FloorSign;
-use pocketmine\block\tile\Sign;
-use pocketmine\block\tile\TileFactory;
 use pocketmine\block\utils\TreeType;
 use pocketmine\block\VanillaBlocks;
 use pocketmine\block\WallSign;
-use pocketmine\item\ItemBlock;
-use pocketmine\item\ItemIdentifier;
 
 class SignPainter
 {
@@ -94,7 +89,7 @@ class SignPainter
             $base->getId(),
             $this->baseSign->getIdInfo()->getVariant(),
             $base->asItem()->getId(),
-            Sign::class
+            "pocketmine\\block\\tile\\Sign"
         );
 
         $sign = match (true) {
