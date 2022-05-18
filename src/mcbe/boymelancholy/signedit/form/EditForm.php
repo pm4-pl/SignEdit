@@ -23,10 +23,8 @@ use pocketmine\block\utils\SignText;
 use pocketmine\form\Form;
 use pocketmine\player\Player;
 
-class EditForm implements Form
+class EditForm extends SignEditForm
 {
-    private BaseSign $sign;
-
     public function __construct(BaseSign $sign)
     {
         $this->sign = $sign;
@@ -34,15 +32,13 @@ class EditForm implements Form
 
     public function handleResponse(Player $player, $data): void
     {
-        if ($data === null) {
-            $player->sendForm(new HomeForm($this->sign));
-            return;
-        }
+        parent::handleResponse($player, $data);
+
         $this->sign->setText(new SignText($data));
         $player->getWorld()->setBlock($this->sign->getPosition(), $this->sign);
     }
 
-    public function jsonSerialize()
+    public function jsonSerialize() : array
     {
         $signText = $this->sign->getText();
 

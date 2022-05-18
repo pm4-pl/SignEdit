@@ -20,29 +20,24 @@ namespace mcbe\boymelancholy\signedit\form;
 use mcbe\boymelancholy\signedit\lang\Language;
 use pocketmine\block\BaseSign;
 use pocketmine\block\utils\SignText;
-use pocketmine\form\Form;
 use pocketmine\player\Player;
 
-class ClearForm implements Form
+class ClearForm extends SignEditForm
 {
-    private BaseSign $sign;
-
     public function __construct(BaseSign $sign)
     {
         $this->sign = $sign;
     }
 
-    public function handleResponse(Player $player, $data): void
+    public function handleResponse(Player $player, $data) : void
     {
-        if (!$data) {
-            $player->sendForm(new HomeForm($this->sign));
-            return;
-        }
+        parent::handleResponse($player, $data);
+
         $this->sign->setText(new SignText());
         $player->getWorld()->setBlock($this->sign->getPosition(), $this->sign);
     }
 
-    public function jsonSerialize()
+    public function jsonSerialize() : array
     {
         $formArray["type"] = "modal";
         $formArray["title"] = Language::get("form.clear.title");

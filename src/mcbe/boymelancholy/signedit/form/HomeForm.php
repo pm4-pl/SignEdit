@@ -22,16 +22,14 @@ use pocketmine\block\BaseSign;
 use pocketmine\form\Form;
 use pocketmine\player\Player;
 
-class HomeForm implements Form
+class HomeForm extends SignEditForm
 {
-    private BaseSign $sign;
-
     public function __construct(BaseSign $sign)
     {
         $this->sign = $sign;
     }
 
-    public function handleResponse(Player $player, $data): void
+    public function handleResponse(Player $player, $data) : void
     {
         if ($data === null) return;
 
@@ -49,7 +47,7 @@ class HomeForm implements Form
         $player->sendForm($form);
     }
 
-    public function jsonSerialize()
+    public function jsonSerialize() : array
     {
         $formArray["type"] = "form";
         $formArray["title"] = Language::get("form.home.title");

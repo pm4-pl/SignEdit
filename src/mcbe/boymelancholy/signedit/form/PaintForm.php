@@ -21,14 +21,10 @@ use mcbe\boymelancholy\signedit\lang\Language;
 use mcbe\boymelancholy\signedit\util\SignPainter;
 use pocketmine\block\BaseSign;
 use pocketmine\block\utils\TreeType;
-use pocketmine\form\Form;
 use pocketmine\player\Player;
 
-class PaintForm implements Form
+class PaintForm extends SignEditForm
 {
-    /** @var BaseSign */
-    private BaseSign $sign;
-
     public function __construct(BaseSign $sign)
     {
         $this->sign = $sign;
@@ -36,14 +32,14 @@ class PaintForm implements Form
 
     public function handleResponse(Player $player, $data) : void
     {
-        if (!$data) {
-            $player->sendForm(new HomeForm($this->sign));
-            return;
-        }
+        parent::handleResponse($player, $data);
 
-        $filteredTypes = array_filter(TreeType::getAll(), function (TreeType $type) use($data) {
-            return $type->getMagicNumber() == (int) $data;
-        });
+        $filteredTypes = array_filter(
+            TreeType::getAll(),
+            function (TreeType $type) use($data) {
+                return $type->getMagicNumber() == (int) $data;
+            }
+        );
         if (!isset($filteredTypes[0])) return;
         $treeType = $filteredTypes[0];
 
@@ -52,7 +48,7 @@ class PaintForm implements Form
         $painter->paint();
     }
 
-    public function jsonSerialize()
+    public function jsonSerialize() : array
     {
         $formArray["type"] = "form";
         $formArray["title"] = Language::get("form.paint.title");
