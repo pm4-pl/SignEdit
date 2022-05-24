@@ -30,7 +30,8 @@ class Language
         if (!file_exists($path)) {
             foreach ($pluginBase->getResources() as $resource) {
                 if ($resource->getBasename() === $lang . ".ini") {
-                    copy($resource->getRealPath(), $path);
+                    $fromPath = $resource->getRealPath();
+                    if ($fromPath !== false) copy($fromPath, $path);
                     break;
                 }
             }
