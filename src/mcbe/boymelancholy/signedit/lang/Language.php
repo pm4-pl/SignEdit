@@ -26,16 +26,8 @@ class Language
 
     public static function load(PluginBase $pluginBase, string $lang)
     {
-        $path = $pluginBase->getDataFolder() . $lang . ".ini";
-        if (!file_exists($path)) {
-            foreach ($pluginBase->getResources() as $resource) {
-                if ($resource->getBasename() === $lang . ".ini") {
-                    $fromPath = $resource->getRealPath();
-                    if ($fromPath !== false) copy($fromPath, $path);
-                    break;
-                }
-            }
-        }
+        $path = $pluginBase->getDataFolder() . "langs" . DIRECTORY_SEPARATOR . $lang . ".ini";
+        if (!file_exists($path)) $pluginBase->saveResource("langs" . DIRECTORY_SEPARATOR . $lang . ".ini");
         $parsed = parse_ini_file($path, false, INI_SCANNER_RAW);
         self::$langTexts = $parsed;
     }
