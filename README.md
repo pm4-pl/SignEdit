@@ -34,5 +34,9 @@ If you want to get a written sign, broken it by a feather. Then it will drop.
 ```yaml
 language: eng
 ```
-Now this plugin supported two language, Japanese (jpn) and English (eng).  
-If you support me about language, please send me a new language ini file by pull request.
+Now this plugin supported two language, Japanese (jpn), English (eng) and Vietnamese(vie).  
+If you support me about language, please send me a new language ini file by pull request.  
+ㅤ  
+
+# Special Thanks
+- [@NhanAZ](https://github.com/NhanAZ)
